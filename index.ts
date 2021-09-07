@@ -12,14 +12,18 @@ interface GetCoursesParams {
   school: string;
 }
 
+interface GetCoursesBody {
+  name: string;
+}
+
 interface GetCoursesQuery {
   page: number;
 }
 
 // Back-end
 
-function getCoursesController(req: Request<GetCoursesParams, any, any, GetCoursesQuery>, res: Response<PaginationResult<number>>) {
-  console.log(req.params.school, req.query.page)
+function getCoursesController(req: Request<GetCoursesParams, any, GetCoursesBody, GetCoursesQuery>, res: Response<PaginationResult<number>>) {
+  console.log(req.params.school, req.query.page, req.body.name)
 
   res.json({
     data: [1, 2, 3],
